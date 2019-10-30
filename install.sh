@@ -1,16 +1,11 @@
 #!/bin/bash
 
-# This is the one-liner installation script for these dotfiles. To install,
-# run one of these two commands...
-#
-# curl https://andrew.cloud/dotfiles.sh | bash
-# or
-# wget -qO- https://andrew.cloud/dotfiles.sh | bash
+# This is the one-liner installation script for these dotfiles.
 
 { # This ensures the entire script is downloaded.
 
   basedir=$HOME/.dotfiles
-  repourl=https://github.com/MrPickles/dotfiles.git
+  repourl=https://github.com/jungziege/dotfiles.git
 
   if ! command -v git >/dev/null ; then
     echo "Error: Git is not installed!"
