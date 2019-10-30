@@ -69,6 +69,20 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-fugitive', { 'tag': 'v3.0' }
 Plug 'tpope/vim-rhubarb'
 Plug 'airblade/vim-gitgutter'
+
+"Clojure
+Plug 'tpope/vim-fireplace'
+Plug 'guns/vim-clojure-static'
+Plug 'guns/vim-clojure-highlight'
+Plug 'guns/vim-sexp'
+Plug 'tpope/vim-sexp-mappings-for-regular-people'
+
+
+"typescript / javascript
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
 call plug#end()
 
 " Map ctrl-n to toggle NERDTree.
