@@ -13,7 +13,7 @@
   st = status -s
   co = checkout
   ;; co = "!f() { git checkout $@ && git submodule update --init --recursive; }; f"
-  top = "!f() { $@; }; f"
+  root = rev-parse --show-toplevel
   bs = "!f() { git bisect $@ && git submodule update --init --recursive; }; f"
   prune-merged = !git branch --merged master | grep -v 'master$' | xargs git branch -d
   prune-merged-remote = !git branch -r --merged master | grep -v 'master$' | grep -v 'DEPLOYED' | sed 's/ *origin\\///' | xargs -I% echo git push origin :%
