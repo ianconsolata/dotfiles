@@ -4,7 +4,7 @@
 
 { # This ensures the entire script is downloaded.
 
-  basedir=$HOME/.dotfiles
+  basedir=$HOME/workspace/dotfiles
   repourl=https://github.com/jungziege/dotfiles.git
 
   if ! command -v git >/dev/null ; then
