@@ -53,6 +53,8 @@ bindkey '^R' history-incremental-search-backward
 setopt correct
 setopt rmstarsilent # silence rm * confirmation
 
+alias tf="terraform"
+
 # Use 256 color for tmux.
 alias tmux="TERM=screen-256color-bce tmux"
 # Attempt to take over existing sessions before creating a new tmux session.
@@ -200,3 +202,9 @@ if [[ "$(uname -s)" == "Linux" ]]; then
 else
   export LSCOLORS='ExFxBxDxCxegedabagacad'
 fi
+
+[[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
+
+export GOPATH=$HOME/workspace/go
+
+export PATH="/usr/local/sbin:$PATH"
