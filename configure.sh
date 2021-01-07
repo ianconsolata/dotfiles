@@ -45,7 +45,7 @@ declare -a FILES_TO_SYMLINK=(
   'editor/vimrc'
 
   'git/gitattributes'
-  'git/gitconfig.static'
+  'git/gitconfig'
   'git/gitignore'
 
   'shell/dircolors.256dark'
@@ -205,9 +205,6 @@ if [[ $BUILD ]]; then
       install_zsh
     fi
   fi
-
-  # Link static gitignore.
-  git config --global include.path ~/.gitconfig.static
 
   # Set up diff-so-fancy.
   if [[ "$(command -v diff-so-fancy)" ]]; then
