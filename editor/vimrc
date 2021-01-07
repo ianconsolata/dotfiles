@@ -315,8 +315,3 @@ if executable('node')
   " Resume latest coc list
   nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 endif
-
-" Local config
-if filereadable(glob("~/.vimrc.local"))
-  source ~/.vimrc.local
-endif
