@@ -83,7 +83,6 @@ if [[ -z "$TMUX" ]]; then
 fi
 
 # Source Oh-My-ZSH.
-ZSH_DISABLE_COMPFIX=true
 source $ZSH/oh-my-zsh.sh
 
 # Update completion scripts (which should be defined by homebrew and oh-my-zsh).
