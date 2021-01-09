@@ -114,33 +114,6 @@ answer_is_yes() {
     || return 1
 }
 
-install_zsh() {
-  # Test to see if zshell is installed.
-  if [ -z "$(command -v zsh)" ]; then
-    # If zsh isn't installed, get the platform of the current machine and
-    # install zsh with the appropriate package manager.
-    platform=$(uname);
-    if [[ $platform == 'Linux' ]]; then
-      if [[ -f /etc/redhat-release ]]; then
-        sudo yum install zsh
-      fi
-      if [[ -f /etc/debian_version ]]; then
-        sudo apt-get install zsh
-      fi
-    elif [[ $platform == 'Darwin' ]]; then
-      brew install zsh
-    fi
-  fi
-  # Set the default shell to zsh if it isn't currently set to zsh
-  if [[ ! "$SHELL" == "$(command -v zsh)" ]]; then
-    chsh -s "$(command -v zsh)"
-  fi
-  # Clone Oh My Zsh if it isn't already present
-  if [[ ! -d $HOME/.oh-my-zsh/ ]]; then
-    git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git "$HOME/.oh-my-zsh"
-  fi
-}
-
 link_file() {
   local sourceFile=$1
   local targetFile=$2
@@ -167,6 +140,34 @@ unlink_file() {
   if [ "$(readlink "$targetFile")" == "$sourceFile" ]; then
     execute "unlink $targetFile" "$targetFile"
   fi
+}
+
+install_zsh() {
+  # Test to see if zshell is installed.
+  if [ -z "$(command -v zsh)" ]; then
+    # If zsh isn't installed, get the platform of the current machine and
+    # install zsh with the appropriate package manager.
+    platform=$(uname);
+    if [[ $platform == 'Linux' ]]; then
+      if [[ -f /etc/redhat-release ]]; then
+        sudo yum install zsh
+      fi
+      if [[ -f /etc/debian_version ]]; then
+        sudo apt-get install zsh
+      fi
+    elif [[ $platform == 'Darwin' ]]; then
+      brew install zsh
+    fi
+  fi
+  # Set the default shell to zsh if it isn't currently set to zsh
+  if [[ ! "$SHELL" == "$(command -v zsh)" ]]; then
+    chsh -s "$(command -v zsh)"
+  fi
+  # Clone Oh My Zsh if it isn't already present
+  if [[ ! -d $HOME/.oh-my-zsh/ ]]; then
+    git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git "$HOME/.oh-my-zsh"
+  fi
+  link_file $(pwd)/shell/oh-my-zsh/custom $HOME/.oh-my-zsh/custom
 }
 
 ensure_homebrew() {
