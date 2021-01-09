@@ -82,47 +82,6 @@ if [[ -z "$TMUX" ]]; then
   export TERM="xterm-256color"
 fi
 
-# Powerlevel10k configs.
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
-  os_icon
-  context
-  vcs
-  dir_writeable
-  dir
-)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
-  command_execution_time
-  status
-  root_indicator
-  background_jobs
-  time
-  battery
-  vi_mode
-)
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
-
-POWERLEVEL9K_TIME_FORMAT='%D{%l:%M %p}'
-POWERLEVEL9K_TIME_BACKGROUND='purple'
-
-POWERLEVEL9K_VI_MODE_INSERT_FOREGROUND='black'
-POWERLEVEL9K_VI_MODE_INSERT_BACKGROUND='cyan'
-POWERLEVEL9K_VI_MODE_NORMAL_FOREGROUND='black'
-POWERLEVEL9K_VI_MODE_NORMAL_BACKGROUND='green'
-
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
-POWERLEVEL9K_SHORTEN_DELIMITER=""
-POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
-
-POWERLEVEL9K_BATTERY_VERBOSE=false
-# https://user-images.githubusercontent.com/704406/43988708-64c0fa52-9d4c-11e8-8cf9-c4d4b97a5200.png
-POWERLEVEL9K_BATTERY_BACKGROUND='grey19'
-
-# Source local version of zshrc.
-if [[ -f ~/.zshrc.local ]]; then
-  source ~/.zshrc.local
-fi
-
 # Source Oh-My-ZSH.
 source $ZSH/oh-my-zsh.sh
 
