@@ -173,6 +173,20 @@ unlink_file() {
   fi
 }
 
+ensure_homebrew() {
+  which -s brew
+  if [[ $? != 0 ]] ; then
+    # Install Homebrew
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  else
+    brew update
+  fi
+}
+
+# Install basics using Brewfile
+ensure_homebrew
+brew bundle install
+
 # Symlink (or unlink) the dotfiles.
 for i in "${FILES_TO_SYMLINK[@]}"; do
   sourceFile="$(pwd)/$i"
