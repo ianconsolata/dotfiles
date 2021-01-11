@@ -24,7 +24,7 @@ brew 'helmfile'
 
 brew 'terraform'
 brew 'awscli'
-brew 'docker'
+cask 'docker'
 
 # Programming Languages
 brew 'go'
