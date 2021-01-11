@@ -4,6 +4,8 @@ cask_args appdir: '/Applications'
 
 # Utilities
 brew 'git'
+brew 'tig'
+brew 'hub'
 brew 'zsh'
 brew 'zsh-completion'
 brew 'bash-completion'
