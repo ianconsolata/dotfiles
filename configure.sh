@@ -48,10 +48,10 @@ declare -a FILES_TO_SYMLINK=(
   'git/gitconfig'
   'git/gitignore'
 
-  'shell/dircolors.256dark'
   'shell/ignore'
   'shell/tmux.conf'
   'shell/zshrc'
+  'shell/antigen.zsh'
   'shell/ripgreprc'
 
   'third_party/Gdbinit/gdbinit'
@@ -142,34 +142,6 @@ unlink_file() {
   fi
 }
 
-install_zsh() {
-  # Test to see if zshell is installed.
-  if [ -z "$(command -v zsh)" ]; then
-    # If zsh isn't installed, get the platform of the current machine and
-    # install zsh with the appropriate package manager.
-    platform=$(uname);
-    if [[ $platform == 'Linux' ]]; then
-      if [[ -f /etc/redhat-release ]]; then
-        sudo yum install zsh
-      fi
-      if [[ -f /etc/debian_version ]]; then
-        sudo apt-get install zsh
-      fi
-    elif [[ $platform == 'Darwin' ]]; then
-      brew install zsh
-    fi
-  fi
-  # Set the default shell to zsh if it isn't currently set to zsh
-  if [[ ! "$SHELL" == "$(command -v zsh)" ]]; then
-    chsh -s "$(command -v zsh)"
-  fi
-  # Clone Oh My Zsh if it isn't already present
-  if [[ ! -d $HOME/.oh-my-zsh/ ]]; then
-    git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git "$HOME/.oh-my-zsh"
-  fi
-  link_file $(pwd)/shell/oh-my-zsh/custom $HOME/.oh-my-zsh/custom
-}
-
 ensure_homebrew() {
   which -s brew
   if [[ $? != 0 ]] ; then
@@ -209,14 +181,6 @@ for i in "${FULL_PATH_FILES_TO_SYMLINK[@]}"; do
 done
 
 if [[ $BUILD ]]; then
-  # Prompt to switch to zsh and oh-my-zsh if not active on terminal.
-  if [ ! -f /bin/zsh ] && [ ! -f /usr/bin/zsh ] || [ ! -d "$HOME/.oh-my-zsh/custom/themes/powerlevel10k" ]; then
-    ask_for_confirmation "Switch to zsh and oh-my-zsh?"
-    if answer_is_yes; then
-      install_zsh
-    fi
-  fi
-
   # Set up diff-so-fancy.
   if [[ "$(command -v diff-so-fancy)" ]]; then
     git config --global pager.diff "diff-so-fancy | less --tabs=4 -RFX"
