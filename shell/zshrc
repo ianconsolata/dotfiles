@@ -88,9 +88,6 @@ if [[ -z "$TMUX" ]]; then
   export TERM="xterm-256color"
 fi
 
-# Source Oh-My-ZSH.
-source $ZSH/oh-my-zsh.sh
-
 # Update completion scripts (which should be defined by homebrew and oh-my-zsh).
 rm -f ~/.zcompdump && compinit
 
