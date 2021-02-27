@@ -31,6 +31,7 @@ brew 'gnu-getopt'
 brew 'certbot'
 brew 'circleci'
 brew 'sops'
+brew 'velero'
 
 brew 'terraform'
 brew 'awscli'

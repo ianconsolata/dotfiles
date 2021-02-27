@@ -88,9 +88,6 @@ if [[ -z "$TMUX" ]]; then
   export TERM="xterm-256color"
 fi
 
-# Update completion scripts (which should be defined by homebrew and oh-my-zsh).
-rm -f ~/.zcompdump && compinit
-
 # Source fzf scripts via via local installation.
 if [ -e ~/.fzf ]; then
   _append_to_path ~/.fzf/bin
@@ -168,3 +165,7 @@ fi
 [[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
 
 export GOPATH=$HOME/workspace/go
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
