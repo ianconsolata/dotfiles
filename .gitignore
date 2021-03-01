@@ -4,3 +4,4 @@
 
 # Ignore plugins downloaded via vim-plug.
 editor/vim/plugged
+Brewfile.lock.json

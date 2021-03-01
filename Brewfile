@@ -33,6 +33,7 @@ brew 'circleci'
 brew 'sops'
 brew 'velero'
 
+brew 'warrensbox/tap/tfswitch'
 brew 'terraform'
 brew 'awscli'
 brew 'minikube'
