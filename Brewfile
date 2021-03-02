@@ -10,6 +10,7 @@ brew 'zsh-completion'
 brew 'bash-completion'
 brew 'wget'
 brew 'z'
+brew 'mas'
 
 # Editing
 brew 'git'
@@ -51,11 +52,15 @@ brew 'python3'
 # Applications
 cask 'iterm2'
 cask '1password'
-cask 'istat-menus'
 cask 'dropbox'
 cask 'brave-browser'
+cask 'firefox'
 cask 'alfred'
 cask 'flux'
 cask 'slack'
 cask 'zoom'
 cask 'spotify'
+
+mas "iStat Menus", id: 1319778037
+mas "OmmWriter", id: 412347921
+mas "Things", id: 904280696
