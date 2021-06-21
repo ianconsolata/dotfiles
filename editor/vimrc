@@ -46,6 +46,7 @@ command! WQA wqa
 call plug#begin()
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/goyo.vim'
 Plug 'ntpeters/vim-better-whitespace'
 
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -81,9 +82,9 @@ Plug 'tpope/vim-sexp-mappings-for-regular-people'
 
 "typescript / javascript
 Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
+Plug 'yuezk/vim-js'
+Plug 'maxmellon/vim-jsx-pretty'
 Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
 call plug#end()
 
 " Map ctrl-n to toggle NERDTree.
@@ -125,13 +126,16 @@ if has("autocmd")
   " Set File type to 'text' for files ending in .txt
   autocmd BufNewFile,BufRead *.txt setfiletype text
   " Enable soft-wrapping for text files
-  autocmd FileType text,markdown,html,xhtml,eruby setlocal wrap linebreak nolist
+  autocmd FileType text,html,xhtml,eruby setlocal wrap linebreak nolist
+  " Auto wrap makrdown files corerctly
+  au FileType markdown setlocal textwidth=80
   " Set default tab width to 4 spaces in Python and Bazel
   au Filetype python,bzl setl et ts=4 sw=4
   " Set shell script syntax highlighting for zsh-theme files
   au BufRead,BufNewFile *.zsh-theme set syntax=sh
   " For Haml
   au! BufRead,BufNewFile *.haml setfiletype haml
+
 
   " Put these in an autocmd group, so that we can delete them easily.
   augroup vimrcEx

@@ -10,6 +10,7 @@ brew 'zsh-completion'
 brew 'bash-completion'
 brew 'wget'
 brew 'z'
+brew 'jq'
 brew 'mas'
 
 # Editing

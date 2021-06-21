@@ -15,8 +15,10 @@
   ;; co = "!f() { git checkout $@ && git submodule update --init --recursive; }; f"
   root = rev-parse --show-toplevel
   bs = "!f() { git bisect $@ && git submodule update --init --recursive; }; f"
-  prune-merged = !git branch --merged master | grep -v 'master$' | xargs git branch -d
-  prune-merged-remote = !git branch -r --merged master | grep -v 'master$' | grep -v 'DEPLOYED' | sed 's/ *origin\\///' | xargs -I% echo git push origin :%
+  prune-merged-master = !git branch --merged master | grep -v 'master$' | xargs git branch -d
+  prune-merged-master-remote = !git branch -r --merged master | grep -v 'master$' | grep -v 'DEPLOYED' | sed 's/ *origin\\///' | xargs -I% echo git push origin :%
+  prune-merged = !git branch --merged main | grep -v 'main$' | xargs git branch -d
+  prune-merged-remote = !git branch -r --merged main | grep -v 'main$' | grep -v 'DEPLOYED' | sed 's/ *origin\\///' | xargs -I% echo git push origin :%
   up = !git pull --ff-only --all -p && git submodule update --init --recursive && git prune-merged
   pf = push --force-with-lease
   cmp = compare
@@ -59,3 +61,5 @@
 	required = true
 [diff "sopsdiffer"]
 	textconv = sops -d
+[init]
+	defaultBranch = main
